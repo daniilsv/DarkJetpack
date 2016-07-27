@@ -4,29 +4,34 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
 
+import java.util.Random;
+
 import ru.daniils.darkjetpack.Core;
 import ru.daniils.darkjetpack.V2;
 import ru.daniils.darkjetpack.graphics.Object;
 import ru.daniils.darkjetpack.objects.Enemy;
+import ru.daniils.darkjetpack.objects.Player;
 
 public class Rocket extends Enemy {
     private Bitmap mineBitmap;
 
     public Rocket(RectF _r, V2 position, V2 velocity) {
         super(_r, position, velocity);
-
+        deflectBitmap = Core.getAssetBitmap("rocketDeflect.png");
     }
 
     @Override
     public void intersects(Object obj) {
-
         type = -1;
-        obj.type = -1;
+        if (obj instanceof Player) {
+            ((Player) obj).ege -= 5 + new Random().nextInt(15);
+        } else
+            obj.type = -1;
     }
 
     @Override
     public void load() {
-        mineBitmap = Core.getAssetBitmap("mine.png");
+        mineBitmap = Core.getAssetBitmap("rocket.png");
         if (mineBitmap == null)
             super.load();
     }

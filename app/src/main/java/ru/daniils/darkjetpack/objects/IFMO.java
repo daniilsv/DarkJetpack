@@ -5,8 +5,6 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
 
-import java.util.Random;
-
 import ru.daniils.darkjetpack.Core;
 import ru.daniils.darkjetpack.TouchEvent;
 import ru.daniils.darkjetpack.V2;
@@ -14,32 +12,32 @@ import ru.daniils.darkjetpack.enemies.AsteroidEge;
 import ru.daniils.darkjetpack.graphics.Object;
 
 public class IFMO extends Object {
-    public int ege = 310;
-    private Bitmap playerBitmap;
+    private Bitmap ifmoBitmap;
 
-    public IFMO(RectF _r, int zIndex) {
-        super(_r, zIndex);
-        type = 2;
-        speed = new V2(2, 2);
+    public IFMO(RectF _r, V2 pos) {
+        super(_r, 10);
+        type = 3;
+        speed = new V2(0, 0);
+        position = pos;
     }
 
     @Override
     public void intersects(Object obj) {
         if (obj instanceof AsteroidEge) {
-            ege -= 2 + new Random().nextInt(7);
-        } else
-            type = -1;
-        obj.type = -1;
+            obj.type = -1;
+        }
     }
 
     @Override
     public void load() {
-        playerBitmap = Core.getAssetBitmap("player.png");
+        ifmoBitmap = Core.getAssetBitmap("ifmo.png");
     }
 
     @Override
     public void tick() {
         super.tick();
+        moveCenterTo(gs.wd2 - (gs.player.position.x - position.x) * 20, gs.hd2 + (gs.player.position.y - position.y) * 20);//TODO:Fix resolution problem
+
     }
 
     @Override
@@ -50,7 +48,7 @@ public class IFMO extends Object {
 
     @Override
     public void draw(Canvas c) {
-        drawBitmap(c, new RectF(0, 0, width, height), playerBitmap, null);
+        drawBitmap(c, new RectF(0, 0, width, height), ifmoBitmap, null);
     }
 
     @Override
