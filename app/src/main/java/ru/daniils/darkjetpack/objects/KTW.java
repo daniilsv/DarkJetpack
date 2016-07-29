@@ -12,10 +12,10 @@ import ru.daniils.darkjetpack.enemies.AsteroidEge;
 import ru.daniils.darkjetpack.enemies.Rocket;
 import ru.daniils.darkjetpack.graphics.Object;
 
-public class IFMO extends Object {
+public class KTW extends Object {
     private Bitmap ifmoBitmap;
 
-    public IFMO(RectF _r, V2 pos) {
+    public KTW(RectF _r, V2 pos) {
         super(_r, 10);
         type = 3;
         speed = new V2(0, 0);
@@ -31,7 +31,7 @@ public class IFMO extends Object {
 
     @Override
     public void load() {
-        ifmoBitmap = Core.getAssetBitmap("ifmo.png");
+        ifmoBitmap = Core.getAssetBitmap("katawa.png");
     }
 
     @Override

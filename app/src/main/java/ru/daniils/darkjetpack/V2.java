@@ -33,6 +33,12 @@ public class V2 {
         y = o.y;
     }
 
+    public V2 set(float _x, float _y) {
+        x = _x;
+        y = _y;
+        return this;
+    }
+
     public V2 add(float i) {
         x += i;
         y += i;

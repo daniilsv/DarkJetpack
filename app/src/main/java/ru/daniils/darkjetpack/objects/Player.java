@@ -22,7 +22,7 @@ public class Player extends Object {
     public Player(RectF _r, int zIndex) {
         super(_r, zIndex);
         type = 2;
-        speed = new V2(2, 2);
+        speed = new V2(1, 1);
     }
 
     @Override
@@ -30,7 +30,13 @@ public class Player extends Object {
         if (obj instanceof AsteroidEge || obj instanceof Rocket) {
             ege -= 2 + new Random().nextInt(7);
         } else if (obj instanceof IFMO) {
-            Core.replaceScene(new GameOverScene(ege));
+            Core.replaceScene(new GameOverScene(2, ege));
+        } else if (obj instanceof GUT) {
+            Core.replaceScene(new GameOverScene(3, ege));
+        } else if (obj instanceof KTW) {
+            Core.replaceScene(new GameOverScene(4, ege));
+        } else if (obj instanceof BL) {
+            Core.replaceScene(new GameOverScene(5, ege));
         } else
             type = -1;
         obj.type = -1;
@@ -38,7 +44,7 @@ public class Player extends Object {
 
     @Override
     public void load() {
-        playerBitmap = Core.getAssetBitmap("player.png");
+        playerBitmap = Core.getAssetBitmap("pupil.png");
     }
 
     @Override

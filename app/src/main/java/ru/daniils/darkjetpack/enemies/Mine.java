@@ -1,8 +1,9 @@
 package ru.daniils.darkjetpack.enemies;
 
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.RectF;
+
+import java.util.Random;
 
 import ru.daniils.darkjetpack.Core;
 import ru.daniils.darkjetpack.V2;
@@ -10,7 +11,6 @@ import ru.daniils.darkjetpack.graphics.Object;
 import ru.daniils.darkjetpack.objects.Enemy;
 
 public class Mine extends Enemy {
-    private Bitmap mineBitmap;
 
     public Mine(RectF _r, V2 position, V2 velocity) {
         super(_r, position, velocity);
@@ -26,16 +26,17 @@ public class Mine extends Enemy {
 
     @Override
     public void load() {
-        mineBitmap = Core.getAssetBitmap("mine.png");
-        if (mineBitmap == null)
-            super.load();
+        for (int i = 1; i <= 10; i++)
+            Core.getAssetBitmap("BAD/" + i + ".png");
+        /*if (mineBitmap == null)
+            super.load();*/
     }
 
     @Override
     public void draw(Canvas c) {
-        if (mineBitmap == null) {
+       /*if (mineBitmap == null) {
             super.draw(c);
-        }
-        drawBitmap(c, new RectF(0, 0, width, height), mineBitmap, null);
+        }*/
+        drawBitmap(c, new RectF(0, 0, width, height), Core.getAssetBitmap("BAD/" + new Random().nextInt(9) + 1 + ".png"), null);
     }
 }

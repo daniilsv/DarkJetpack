@@ -19,13 +19,13 @@ public abstract class Enemy extends Object {
     private Bitmap failBitmap;
 
     protected Enemy(RectF _r, V2 _position, V2 _velocity) {
-        super(_r, 3);
+        super(_r, 4);
         failBitmap = Core.getAssetBitmap("fail.png");
         deflectBitmap = Core.getAssetBitmap("fail.png");
         position = _position;
         velocity = _velocity;
         type = 2;
-        speed = new V2(1, 1);
+        speed = new V2(0.5, 0.5);
     }
 
     public abstract void intersects(Object obj);

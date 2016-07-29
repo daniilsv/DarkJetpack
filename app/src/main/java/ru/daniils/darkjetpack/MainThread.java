@@ -3,7 +3,7 @@ package ru.daniils.darkjetpack;
 
 import ru.daniils.darkjetpack.graphics.GameView;
 import ru.daniils.darkjetpack.graphics.Scene;
-import ru.daniils.darkjetpack.scenes.MainScene;
+import ru.daniils.darkjetpack.scenes.GameScene;
 
 public class MainThread extends Thread {
     public GameView gameView;
@@ -21,7 +21,7 @@ public class MainThread extends Thread {
                 Thread.sleep(Core.MPT);
         } catch (InterruptedException ignored) {
         }
-        replaceScene(new MainScene());
+        replaceScene(new GameScene());
         while (Core.working) {
             tick();
             try {

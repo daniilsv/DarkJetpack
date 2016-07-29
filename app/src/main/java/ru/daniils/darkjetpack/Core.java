@@ -50,7 +50,7 @@ public class Core {
             pictures.put(path, btm);
             return btm;
         } catch (IOException ex) {
-            return null;
+            return getAssetBitmap("fail.png");
         }
     }
 

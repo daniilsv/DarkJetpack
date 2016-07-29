@@ -13,7 +13,7 @@ import ru.daniils.darkjetpack.objects.Enemy;
 import ru.daniils.darkjetpack.objects.Player;
 
 public class AsteroidEge extends Enemy {
-    private Bitmap mineBitmap;
+    private Bitmap btmp;
 
     public AsteroidEge(RectF _r, V2 position, V2 velocity) {
         super(_r, position, velocity);
@@ -22,25 +22,25 @@ public class AsteroidEge extends Enemy {
 
     @Override
     public void intersects(Object obj) {
-        type = -1;
         if (obj instanceof Player) {
-            ((Player) obj).ege -= 5 + new Random().nextInt(15);
-        } else
-            obj.type = -1;
+            ((Player) obj).ege -= 2 + new Random().nextInt(10);
+            type = -1;
+        }
     }
 
     @Override
     public void load() {
-        mineBitmap = Core.getAssetBitmap("mine.png");
-        if (mineBitmap == null)
-            super.load();
+        int ii = 1 + new Random().nextInt(9);
+        btmp = Core.getAssetBitmap("BAD/" + ii + ".png");
+        /*if (mineBitmap == null)
+            super.load();*/
     }
 
     @Override
     public void draw(Canvas c) {
-        if (mineBitmap == null) {
+       /*if (mineBitmap == null) {
             super.draw(c);
-        }
-        drawBitmap(c, new RectF(0, 0, width, height), mineBitmap, null);
+        }*/
+        drawBitmap(c, new RectF(0, 0, width, height), btmp, null);
     }
 }

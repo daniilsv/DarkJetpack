@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.RectF;
-import android.support.annotation.NonNull;
 
 import java.util.ArrayList;
 
@@ -129,7 +128,7 @@ public abstract class Layer implements Comparable<Layer> {
     }
 
     @Override
-    public int compareTo(@NonNull Layer another) {
+    public int compareTo(Layer another) {
         return zIndex - another.zIndex;
     }
 

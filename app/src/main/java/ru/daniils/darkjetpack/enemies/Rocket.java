@@ -13,7 +13,7 @@ import ru.daniils.darkjetpack.objects.Enemy;
 import ru.daniils.darkjetpack.objects.Player;
 
 public class Rocket extends Enemy {
-    private Bitmap mineBitmap;
+    private Bitmap btmp;
 
     public Rocket(RectF _r, V2 position, V2 velocity) {
         super(_r, position, velocity);
@@ -22,25 +22,25 @@ public class Rocket extends Enemy {
 
     @Override
     public void intersects(Object obj) {
-        type = -1;
         if (obj instanceof Player) {
             ((Player) obj).ege -= 5 + new Random().nextInt(15);
-        } else
-            obj.type = -1;
+            type = -1;
+        }
     }
 
     @Override
     public void load() {
-        mineBitmap = Core.getAssetBitmap("rocket.png");
-        if (mineBitmap == null)
-            super.load();
+        int ii = 1 + new Random().nextInt(3);
+        btmp = Core.getAssetBitmap("BAD2/" + ii + ".png");
+        /*if (mineBitmap == null)
+            super.load();*/
     }
 
     @Override
-    public void draw(Canvas c) {
+    public void draw(Canvas c) {/*
         if (mineBitmap == null) {
             super.draw(c);
-        }
-        drawBitmap(c, new RectF(0, 0, width, height), mineBitmap, null);
+        }*/
+        drawBitmap(c, new RectF(0, 0, width, height), btmp, null);
     }
 }
